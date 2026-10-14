@@ -1,0 +1,3 @@
+# 로컬 개발용 비밀값 — 이 파일을 .dev.vars 로 복사해서 키를 넣으세요 (.dev.vars 는 git 에 올리지 않음)
+# 배포 환경에는: npx wrangler secret put GEMINI_API_KEY
+GEMINI_API_KEY=

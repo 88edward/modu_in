@@ -1,0 +1,153 @@
+---
+import Logo from './Logo.astro';
+import LanguageSelect from './islands/LanguageSelect';
+
+const NAV_ITEMS = [
+  { label: '스마트 인증 검색', href: '/search' },
+  { label: '스마트 인증 관리', href: '/manage' },
+  { label: '모두의 인증 소식', href: '/news' },
+  { label: '표시사항 생성', href: '/label' },
+  { label: '고객지원', href: '/support' },
+];
+
+const current = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<header class="header">
+  <div class="inner">
+    <Logo />
+    <nav class="gnb" aria-label="주요 메뉴">
+      {
+        NAV_ITEMS.map((item) => (
+          <a
+            href={item.href}
+            class:list={['gnb-link', { active: current === item.href }]}
+            aria-current={current === item.href ? 'page' : undefined}
+          >
+            {item.label}
+            {item.href === '/label' && <span class="badge">NEW</span>}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="util">
+      <a href="#">로그인</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="#">회원가입</a>
+      <span class="sep" aria-hidden="true"></span>
+      <LanguageSelect client:idle />
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: var(--header-h);
+    background: #fff;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  .inner {
+    max-width: 1310px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+  .gnb {
+    display: flex;
+    gap: 30px;
+    flex: 1;
+  }
+  .gnb-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: var(--header-h);
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .gnb-link:hover,
+  .gnb-link.active {
+    color: var(--primary);
+  }
+  .gnb-link.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--primary);
+  }
+  .badge {
+    position: absolute;
+    top: 12px;
+    right: -18px;
+    padding: 1px 5px;
+    border-radius: 8px;
+    background: #ff4d4f;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1.4;
+  }
+  .util {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .sep {
+    width: 1px;
+    height: 14px;
+    background: #d0d5dd;
+  }
+
+  @media (max-width: 1100px) {
+    .inner {
+      gap: 28px;
+    }
+    .gnb {
+      gap: 20px;
+    }
+    .gnb-link {
+      font-size: 15px;
+    }
+  }
+  @media (max-width: 900px) {
+    .header {
+      height: auto;
+    }
+    .inner {
+      flex-wrap: wrap;
+      gap: 0 16px;
+      padding-top: 12px;
+    }
+    .util {
+      margin-left: auto;
+      font-size: 13px;
+    }
+    .gnb {
+      order: 3;
+      flex-basis: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .gnb-link {
+      height: 48px;
+      padding-right: 18px;
+    }
+    .badge {
+      position: static;
+      margin-left: 4px;
+    }
+  }
+</style>

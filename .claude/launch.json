@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "astro-dev",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 4321
+    },
+    {
+      "name": "astro-dev-node",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/astro/bin/astro.mjs", "dev"],
+      "port": 4321
+    }
+  ]
+}

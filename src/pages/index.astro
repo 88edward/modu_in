@@ -1,0 +1,424 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
+---
+
+<Layout>
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>시험·인증 검색부터 진행 문서 관리까지</h1>
+      <p>손쉽게 관리하고 가장 저렴하게 시험 진행하세요.</p>
+      <div class="cta">
+        <a href="/search" class="btn-primary start">지금 시작하기</a>
+        <a href="/label" class="label-link">
+          <span class="new">NEW</span> 문서로 표시사항 자동 생성하기 →
+        </a>
+      </div>
+    </div>
+
+    <div class="devices" aria-hidden="true">
+      <!-- 왼쪽: 대시보드 태블릿 -->
+      <div class="device side left">
+        <div class="screen">
+          <div class="mini-gnb">
+            <Logo size="sm" />
+            <span>스마트 인증 검색</span><span>스마트 인증 관리</span><span>모두의 인증 소식</span>
+          </div>
+          <div class="dash">
+            <ul class="dash-menu">
+              <li class="on">대시보드</li>
+              <li>온라인접수</li>
+              <li>진행현황</li>
+              <li>제품조회</li>
+              <li>문서발송</li>
+            </ul>
+            <div class="dash-body">
+              <div class="stat-row">
+                <div class="stat"><i class="doc"></i><small>등록된 모든 문서</small><b>81</b></div>
+                <div class="stat"><i class="cert"></i><small>인증서</small><b>8</b></div>
+                <div class="stat"><i class="doc"></i><small>진행중</small><b>2</b></div>
+              </div>
+              <p class="dash-title">진행 상황 ›</p>
+              <div class="dash-table">
+                <div><span>이미지</span><span>모델명</span></div>
+                <div><span class="thumb"></span><span>롱 마스크(Long Mask) S</span></div>
+                <div><span class="thumb"></span><span>무선 선풍기 MF-01</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 가운데: 검색 데스크톱 -->
+      <div class="device main">
+        <div class="screen">
+          <div class="mini-gnb">
+            <Logo size="sm" />
+            <span>스마트 인증 검색</span><span>스마트 인증 관리</span><span>모두의 인증 소식</span><span>표시사항 생성</span>
+          </div>
+          <div class="mini-hero">
+            <b>스마트 인증 검색</b>
+            <small>간편하게 제품에 필요한 인증을 확인하세요.</small>
+            <div class="mini-search">
+              <span>제품을 검색해보세요</span>
+              <span class="rank">2. 선풍기</span>
+            </div>
+          </div>
+          <div class="mini-cards">
+            <div><b>전기제품</b><small>전기, 전동, 전자제품, 조명</small></div>
+            <div><b>생활용품</b><small>생활, 스포츠, 이미용</small></div>
+            <div><b>어린이제품</b><small>완구, 교구, 유아용품</small></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 오른쪽: 모바일 결과 -->
+      <div class="device side right">
+        <div class="screen mobile">
+          <div class="m-top"><span>‹ 선풍기</span><span>⌕</span></div>
+          <div class="m-chips"><b>전기제품</b><span>생활용품</span><span>어린이제품</span></div>
+          <div class="m-filter"><span>제조국 ⌄</span><span>전격사양 ⌄</span><span>사용연령 ⌄</span></div>
+          <p class="m-count">검색결과 <b>5건</b></p>
+          <div class="m-item"><b>선풍기</b><small>교류전원 (AC)</small><span>비용 확인 ›</span></div>
+          <div class="m-item"><b>탁상용 선풍기</b><small>직류전원 (DC)</small><span>비용 확인 ›</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100vh - var(--header-h));
+    padding-top: 128px;
+    background:
+      radial-gradient(ellipse 45% 55% at 15% 30%, rgba(186, 216, 255, 0.55), transparent 70%),
+      radial-gradient(ellipse 40% 50% at 88% 40%, rgba(186, 216, 255, 0.55), transparent 70%),
+      radial-gradient(ellipse 60% 50% at 50% 35%, #fff, transparent 70%),
+      #eef5ff;
+    text-align: center;
+  }
+  .hero-copy {
+    padding: 0 16px;
+  }
+  h1 {
+    margin: 0 0 18px;
+    font-size: clamp(30px, 4.2vw, 60px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+  .hero-copy > p {
+    margin: 0 0 34px;
+    font-size: clamp(16px, 1.6vw, 23px);
+  }
+  .cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .start {
+    padding: 0 32px;
+    height: 62px;
+    font-size: 20px;
+  }
+  .label-link {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  .label-link:hover {
+    text-decoration: underline;
+  }
+  .new {
+    margin-right: 4px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: #ff4d4f;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  /* ----- 디바이스 목업 ----- */
+  .devices {
+    position: relative;
+    max-width: 1580px;
+    height: 400px;
+    margin: 90px auto 0;
+  }
+  .device {
+    position: absolute;
+    bottom: -40px;
+    padding: 6px;
+    border-radius: 22px 22px 0 0;
+    background: #0e1d44;
+    box-shadow: 0 20px 60px rgba(14, 29, 68, 0.25);
+    text-align: left;
+    font-size: 8px;
+  }
+  .screen {
+    height: 100%;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+    background: #fff;
+  }
+  .main {
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 62%;
+    height: 390px;
+  }
+  .side {
+    height: 300px;
+    width: 32%;
+  }
+  .left {
+    left: 0;
+  }
+  .right {
+    right: 0;
+    width: 18%;
+  }
+  .right .screen {
+    border-radius: 16px 0 0 0;
+  }
+  .mini-gnb {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 40px;
+    padding: 0 18px;
+    font-weight: 700;
+    white-space: nowrap;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  .mini-gnb :global(.logo) {
+    margin-right: 16px;
+  }
+  .mini-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    height: 190px;
+    padding-top: 42px;
+    background: linear-gradient(120deg, #0b3d91, #0b5bd3);
+    color: #fff;
+  }
+  .mini-hero b {
+    font-size: 20px;
+  }
+  .mini-hero small {
+    font-size: 10px;
+    opacity: 0.85;
+  }
+  .mini-search {
+    display: flex;
+    gap: 10px;
+    width: 60%;
+    margin-top: 26px;
+  }
+  .mini-search span {
+    flex: 1;
+    padding: 9px 16px;
+    border-radius: 20px;
+    background: #fff;
+    color: #9aa3b2;
+  }
+  .mini-search .rank {
+    flex: 0 0 90px;
+    color: #111827;
+    font-weight: 700;
+  }
+  .mini-cards {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 28px;
+  }
+  .mini-cards div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 180px;
+    padding: 18px;
+    border-radius: 8px;
+    background: #f6f8fb;
+  }
+  .mini-cards b {
+    font-size: 10px;
+  }
+  .mini-cards small {
+    font-size: 7px;
+    color: #6b7280;
+  }
+  .dash {
+    display: flex;
+    height: 100%;
+    background: #f6f8fb;
+  }
+  .dash-menu {
+    margin: 0;
+    padding: 14px 10px;
+    list-style: none;
+    width: 90px;
+    background: #fff;
+  }
+  .dash-menu li {
+    padding: 8px;
+    color: #9aa3b2;
+  }
+  .dash-menu li.on {
+    border: 1px solid #0b6cf0;
+    border-radius: 4px;
+    color: #0b6cf0;
+    background: #e8f1ff;
+  }
+  .dash-body {
+    flex: 1;
+    padding: 14px;
+  }
+  .stat-row {
+    display: flex;
+    gap: 10px;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 80px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #fff;
+  }
+  .stat i {
+    width: 14px;
+    height: 16px;
+    border-radius: 3px;
+    background: #0b6cf0;
+  }
+  .stat i.cert {
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+  }
+  .stat small {
+    font-size: 6px;
+    color: #6b7280;
+  }
+  .stat b {
+    font-size: 12px;
+  }
+  .dash-title {
+    margin: 14px 0 8px;
+    font-weight: 700;
+  }
+  .dash-table {
+    border-radius: 6px;
+    background: #fff;
+  }
+  .dash-table div {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 8px 14px;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  .thumb {
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #8aa, #577);
+  }
+  .mobile {
+    padding: 12px;
+    font-size: 9px;
+  }
+  .m-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    padding-bottom: 12px;
+  }
+  .m-chips,
+  .m-filter {
+    display: flex;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .m-chips > * {
+    padding: 7px 12px;
+    border-radius: 14px;
+    background: #f0f2f5;
+  }
+  .m-chips b {
+    background: #111827;
+    color: #fff;
+  }
+  .m-filter {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #f0f2f5;
+  }
+  .m-filter span {
+    padding: 6px 8px;
+    border: 1px solid #e5e8ee;
+    border-radius: 4px;
+  }
+  .m-count b {
+    color: #0b6cf0;
+  }
+  .m-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px;
+    margin-bottom: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f6f8fb;
+  }
+  .m-item b {
+    font-size: 12px;
+  }
+  .m-item small {
+    grid-row: 2;
+    color: #6b7280;
+  }
+  .m-item span {
+    grid-row: 1;
+    grid-column: 2;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      padding-top: 72px;
+      min-height: 0;
+    }
+    .devices {
+      height: 260px;
+      margin-top: 56px;
+    }
+    .side {
+      display: none;
+    }
+    .main {
+      width: calc(100% - 32px);
+      height: 250px;
+    }
+    .mini-gnb span {
+      display: none;
+    }
+    .mini-search {
+      width: 85%;
+    }
+    .mini-cards div {
+      padding: 10px;
+    }
+  }
+</style>

@@ -1,0 +1,115 @@
+---
+const CATEGORIES = [
+  {
+    title: '전기제품',
+    desc: '전기, 전동, 전자제품, 조명',
+    icon: 'plug',
+  },
+  {
+    title: '생활용품',
+    desc: '생활, 스포츠, 이미용',
+    icon: 'sofa',
+  },
+  {
+    title: '어린이제품',
+    desc: '완구, 교구, 유아용품',
+    icon: 'bottle',
+  },
+];
+---
+
+<section class="categories container" aria-label="제품 카테고리">
+  {
+    CATEGORIES.map((c) => (
+      <a href="#" class="card">
+        <span class="icon" aria-hidden="true">
+          {c.icon === 'plug' && (
+            <svg viewBox="0 0 48 48">
+              <rect x="14" y="4" width="5" height="12" rx="2.5" fill="#0b6cf0" />
+              <rect x="29" y="4" width="5" height="12" rx="2.5" fill="#0b6cf0" />
+              <rect x="8" y="14" width="32" height="18" rx="5" fill="#a9c8ff" />
+              <rect x="21.5" y="30" width="5" height="16" rx="2.5" fill="#0b6cf0" />
+            </svg>
+          )}
+          {c.icon === 'sofa' && (
+            <svg viewBox="0 0 48 48">
+              <rect x="9" y="10" width="30" height="16" rx="5" fill="#a9c8ff" />
+              <rect x="3" y="18" width="42" height="16" rx="5" fill="#0b6cf0" />
+              <rect x="9" y="22" width="30" height="7" rx="2" fill="#a9c8ff" />
+              <rect x="7" y="34" width="4" height="5" rx="1.5" fill="#0b6cf0" />
+              <rect x="37" y="34" width="4" height="5" rx="1.5" fill="#0b6cf0" />
+            </svg>
+          )}
+          {c.icon === 'bottle' && (
+            <svg viewBox="0 0 48 48">
+              <path d="M20 4h8l2 8h-12z" fill="#0b6cf0" />
+              <rect x="15" y="12" width="18" height="6" rx="2" fill="#0b6cf0" />
+              <rect x="13" y="17" width="22" height="28" rx="6" fill="#a9c8ff" />
+              <rect x="20" y="25" width="8" height="3" rx="1.5" fill="#0b6cf0" />
+              <rect x="20" y="31" width="8" height="3" rx="1.5" fill="#0b6cf0" />
+              <rect x="20" y="37" width="8" height="3" rx="1.5" fill="#0b6cf0" />
+            </svg>
+          )}
+        </span>
+        <span class="text">
+          <strong>{c.title}</strong>
+          <span>{c.desc}</span>
+        </span>
+      </a>
+    ))
+  }
+</section>
+
+<style>
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    padding: 44px 48px;
+    border-radius: var(--radius);
+    background: var(--bg-soft);
+    border: 1px solid transparent;
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s,
+      transform 0.15s;
+  }
+  .card:hover {
+    border-color: #cfe0ff;
+    box-shadow: 0 10px 28px rgba(11, 108, 240, 0.08);
+    transform: translateY(-2px);
+  }
+  .icon svg {
+    width: 52px;
+    height: 52px;
+    display: block;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .text strong {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .text span {
+    font-size: 15px;
+    color: var(--text-sub);
+  }
+  @media (max-width: 900px) {
+    .categories {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .card {
+      padding: 24px;
+      gap: 20px;
+    }
+  }
+</style>

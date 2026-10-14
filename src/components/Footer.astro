@@ -1,0 +1,55 @@
+---
+import Logo from './Logo.astro';
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="top">
+      <Logo />
+      <ul class="links">
+        <li><a href="#">회사소개</a></li>
+        <li><a href="#">이용약관</a></li>
+        <li><a href="#"><strong>개인정보처리방침</strong></a></li>
+        <li><a href="/support">고객지원</a></li>
+      </ul>
+    </div>
+    <p class="info">
+      (주)모두의인증 · 대표 홍길동 · 사업자등록번호 000-00-00000<br />
+      서울특별시 OO구 OO로 00 · 고객센터 0000-0000 · help@example.com
+    </p>
+    <p class="copy">© 2026 MODU-IN. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: 120px;
+    padding: 48px 0 56px;
+    background: var(--bg-soft);
+    border-top: 1px solid var(--line);
+    color: var(--text-sub);
+    font-size: 14px;
+  }
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .links {
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .info {
+    margin: 24px 0 8px;
+    line-height: 1.7;
+  }
+  .copy {
+    margin: 0;
+    color: var(--text-mute);
+  }
+</style>

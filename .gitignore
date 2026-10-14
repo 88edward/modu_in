@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+data/
+.dev.vars
+.env
+mode/
+mode.zip
+*.zip

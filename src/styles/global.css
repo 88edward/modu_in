@@ -1,0 +1,80 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+:root {
+  --primary: #0b6cf0;
+  --primary-dark: #0856c4;
+  --primary-soft: #e8f1ff;
+  --navy: #0a1f5c;
+  --navy-deep: #07174a;
+  --text: #111827;
+  --text-sub: #4b5563;
+  --text-mute: #9aa3b2;
+  --line: #e5e8ee;
+  --bg-soft: #f6f8fb;
+  --radius: 16px;
+  --container: 1230px;
+  --header-h: 70px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  color: var(--text);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+input {
+  font: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-primary:disabled {
+  background: #b9c6db;
+  cursor: not-allowed;
+}

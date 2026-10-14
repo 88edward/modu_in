@@ -1,0 +1,228 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CategoryCards from '../components/CategoryCards.astro';
+import SearchBar from '../components/islands/SearchBar';
+import RealtimeRanking from '../components/islands/RealtimeRanking';
+import BannerCarousel from '../components/islands/BannerCarousel';
+import '../styles/islands.css';
+
+const STEPS = [
+  { title: '파일 업로드', desc: '제품 사진·설명서·표시 사진·인증서' },
+  { title: '문서 내용 추출', desc: '제품명·모델명·용도·재질·전원·인증정보' },
+  { title: '전체 품목 매칭', desc: '6개 분야 품목표를 한꺼번에 검색' },
+  { title: '구분 질문', desc: '후보가 여러 개일 때만 최소한으로' },
+  { title: '최신 원문 확인', desc: '근거 법령·고시가 최신인지 확인' },
+  { title: '추가 규칙 적용', desc: '구성품·식품접촉·무선·경고문구' },
+  { title: '표시 초안 생성', desc: '항목·값·위치·근거·미확정 부분까지' },
+];
+---
+
+<Layout title="표시사항 생성 | 모두의 인증">
+  <section class="page-hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow">QUALITY LABEL GENERATOR</p>
+        <h1>표시사항 생성</h1>
+        <p class="sub">문서를 업로드하면 제품에 필요한 품질 표시사항을 자동으로 만들어드려요.</p>
+        <SearchBar client:load placeholder="제품을 검색해보세요." />
+      </div>
+      <RealtimeRanking client:load />
+    </div>
+  </section>
+
+  <section class="container banner-wrap">
+    <BannerCarousel client:visible />
+  </section>
+
+  <CategoryCards />
+
+  <section class="container generator" id="generator">
+    <div class="section-head">
+      <h2>품질 표시사항 자동 생성</h2>
+      <p>카테고리를 고를 필요 없어요. 제품 자료만 주시면 어떤 법이 적용되는지 시스템이 정해 드려요.</p>
+    </div>
+    <ol class="steps">
+      {
+        STEPS.map((s, i) => (
+          <li>
+            <span class="num">{i + 1}</span>
+            <strong>{s.title}</strong>
+            <span>{s.desc}</span>
+          </li>
+        ))
+      }
+    </ol>
+    <div class="start">
+      <a href="/label/flow" class="btn-primary start-btn">표시사항 만들기 시작</a>
+      <p>병원 접수처럼 — 증상(제품 사실)을 알려주시면 진료과(적용 법령)는 저희가 정해요.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--navy);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 22px 22px;
+    color: #fff;
+  }
+  .page-hero::before,
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 36px solid rgba(255, 255, 255, 0.035);
+    pointer-events: none;
+  }
+  .page-hero::before {
+    width: 520px;
+    height: 520px;
+    right: -120px;
+    top: -60px;
+  }
+  .page-hero::after {
+    width: 380px;
+    height: 380px;
+    right: -60px;
+    top: 10px;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+  .hero-text {
+    flex: 1;
+    min-width: 0;
+  }
+  .eyebrow {
+    margin: 0 0 12px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #6fa6ff;
+  }
+  h1 {
+    margin: 0 0 12px;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .sub {
+    margin: 0 0 24px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #dbe5ff;
+  }
+  .banner-wrap {
+    margin-top: 64px;
+    margin-bottom: 120px;
+  }
+  .generator {
+    margin-top: 120px;
+  }
+  .section-head {
+    margin-bottom: 28px;
+  }
+  .section-head h2 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+  }
+  .section-head p {
+    margin: 0;
+    color: var(--text-sub);
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .steps li {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 16px;
+    border-radius: var(--radius);
+    background: var(--bg-soft);
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.5;
+  }
+  .steps strong {
+    font-size: 15px;
+    color: var(--text);
+  }
+  .num {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    margin-bottom: 4px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+  }
+  .start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 36px;
+    text-align: center;
+  }
+  .start-btn {
+    height: 58px;
+    padding: 0 36px;
+    font-size: 18px;
+  }
+  .start p {
+    margin: 0;
+    color: var(--text-sub);
+    font-size: 14px;
+  }
+  @media (max-width: 1100px) {
+    .steps {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media (max-width: 640px) {
+    .steps {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .hero-inner :global(.ranking) {
+      width: 100%;
+    }
+    h1 {
+      font-size: 28px;
+    }
+    .banner-wrap {
+      margin: 32px auto 48px;
+    }
+    .banner-wrap :global(.banner) {
+      height: 150px;
+    }
+    .generator {
+      margin-top: 64px;
+    }
+  }
+</style>

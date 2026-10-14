@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// 아직 화면이 없는 메뉴용 임시 페이지
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'search' }, props: { title: '스마트 인증 검색' } },
+    { params: { slug: 'manage' }, props: { title: '스마트 인증 관리' } },
+    { params: { slug: 'news' }, props: { title: '모두의 인증 소식' } },
+    { params: { slug: 'support' }, props: { title: '고객지원' } },
+  ];
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={`${title} | 모두의 인증`}>
+  <section class="container placeholder">
+    <h1>{title}</h1>
+    <p>준비 중인 화면입니다.</p>
+    <a href="/label" class="btn-primary">표시사항 생성 바로가기</a>
+  </section>
+</Layout>
+
+<style>
+  .placeholder {
+    padding-top: 140px;
+    text-align: center;
+  }
+  h1 {
+    margin: 0 0 12px;
+    font-size: 32px;
+  }
+  p {
+    margin: 0 0 32px;
+    color: var(--text-sub);
+  }
+  a {
+    height: 52px;
+    padding: 0 28px;
+  }
+</style>

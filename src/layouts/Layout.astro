@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingButtons from '../components/FloatingButtons.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = '모두의 인증',
+  description = '시험·인증 검색부터 진행 문서 관리까지, 모두의 인증',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <FloatingButtons />
+  </body>
+</html>

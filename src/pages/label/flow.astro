@@ -1,0 +1,21 @@
+---
+// 표시사항 생성 진행 화면 — 삼쩜삼처럼 가운데 한 칸만 쓰는 단계형 화면 (헤더·푸터 없음)
+import '../../styles/global.css';
+import '../../styles/flow.css';
+import '../../styles/flow-extras.css';
+import LabelFlow from '../../components/islands/flow/LabelFlow';
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>표시사항 만들기 | 모두의 인증</title>
+  </head>
+  <body>
+    <LabelFlow client:only="react" />
+  </body>
+</html>
